@@ -1,0 +1,129 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Styles du menu principal de navigation */
+#headnav {
+    background-color: #333;
+    color: #fff;
+}
+
+#headnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#headnav ul li {
+    margin: 0 15px;
+}
+
+#headnav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 14px 20px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+#headnav ul li a:hover {
+    background-color: #575757;
+}
+
+/* Styles du corps de la page */
+#title{
+    justify-content: center;
+}
+
+.main-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.main-container .item {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container label {
+    font-weight: bold;
+    display: block;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 45%;
+}
+
+.main-container input[type="text"] {
+    width: 25%;
+    padding: 10px 0px 10px 0px ;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    line-height: 1.5; /* Ajuste la hauteur de ligne pour aligner le texte saisi avec le placeholder */
+}
+
+.main-container input[type="text"]:focus {
+    border-color: #333;
+}
+
+
+/* Styles pour le placeholder */
+::placeholder {
+    color: #aaa; /* Couleur du placeholder */
+    opacity: 1; /* Par défaut, l'opacité change dans certains navigateurs, ceci la fixe à 100% */
+}
+
+/* Styles pour la position du placeholder */
+.main-container input[type="text"]::placeholder {
+    text-align: center; /* Centre le texte du placeholder */
+    padding-left: 10px; /* Augmente l'espacement à gauche */
+    /* Ou pour un positionnement exact avec margin ou padding */
+    margin-left: 10px; /* Exemple pour marge à gauche */
+    /* padding-top, padding-right, padding-bottom peuvent également être utilisés */
+}
+
+
+/* Styles pour les boutons */
+.button-box {
+    margin:auto;
+    display: inline-flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin: 0 10px; /* Espace entre les boutons */
+}
+
+.button:hover {
+    background-color: #575757;
+    transform: scale(1.05);
+}
+
+.button:active {
+    background-color: #111;
+    transform: scale(1);
+}
