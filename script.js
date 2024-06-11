@@ -1,11 +1,14 @@
+// indicateur de validité
+let valid = true;
+let messageShown = false;
 
 function convert(){
     // Récupérer les points pour le bac
     let pointsBac = conversionPremiere() + conversionTerminale() + conversionDeuxAnnées();
 
-    // Vérifier si les points sont valides
+    // Vérifier si les notes saisies sont valides ( 0 <= note <= 20)
     if(isNaN(pointsBac)){
-        alert("Veuillez entrer des valeurs numériques valides");
+        showAlert("Veuillez entrer des valeurs numériques valides !");
         return;
     }
 
@@ -18,17 +21,15 @@ function convert(){
     // Afficher les résultats
     afficherPopupResultats(mention, moyenneGenerale);
 
+    // Remettre les valeurs par défaut
+    resetInputs();
+    valid = true;
+    messageShown = false;
 }
 
 function reset(){
     // Demander une confirmation
-    let confirmation = confirm("Voulez-vous vraiment tout effacer ?");
-    if(!confirmation){
-        return;
-    }
-
-    // Réinitialiser les valeurs des inputs
-    resetInputs();
+    let confirmation = showConfirmation("Voulez-vous vraiment tout effacer ?");
 }
 
 
@@ -100,13 +101,21 @@ function conversionPremiere(){
 
     // metytre les valeurs dans un tableau
     let notes = [frEcrit, frOral, spePrem];
-        // Vérifier si les notes sont valides
-        notes.forEach(note => {
-            if(isNaN(note) || note < 0 || note > 20){
-                alert("Veuillez entrer des valeurs numériques valides");
-                return;
-            }
-        });
+
+
+    // Vérifier si les notes sont valides
+    notes.forEach(note => {
+        if (isNaN(note) || note < 0 || note > 20) {
+            valid = false;
+        }
+    });
+
+    // Vérifier si la situation est valide
+    if(!valid && !messageShown){
+        showAlert("Veuillez entrer des valeurs numériques valides");
+        messageShown = true;
+        return;
+    }
 
     // Calculer les moyennes
     let moyenneFr = (frEcrit + frOral) / 2;
@@ -118,6 +127,9 @@ function conversionPremiere(){
 }
 
 function conversionTerminale(){
+    // innitialiser l'indicateur de validité
+    let valid = true;
+
     // Récupérer les valeurs des inputs et les convertir en nombres
     let spe1 = parseFloat(document.getElementById("spe1").value);
     let spe2 = parseFloat(document.getElementById("spe2").value);
@@ -130,18 +142,23 @@ function conversionTerminale(){
 
     // Vérifier si les notes sont valides
     notes.forEach(note => {
-        if(isNaN(note) || note < 0 || note > 20){
-            alert("Veuillez entrer des valeurs numériques valides");
-            return;
+        if(isNaN(note) || (!(note >= 0 && note <= 20))){
+            valid = false;
         }
     });
+
+    // Vérifier si la situation est valide
+    if(!valid && !messageShown){
+        showAlert("Veuillez entrer des valeurs numériques valides");
+        return;
+    }
 
     // Calculer les points pour le bac
     let ptsTerminale = spe1*16 + spe2*16 + philo * 8 + eps * 6 + gdOral * 10;
 
     // Vérifier si les notes saisies sont valides ( 0 <= note <= 20)
     if(isNaN(ptsTerminale)){
-        alert("Veuillez entrer des valeurs numériques valides");
+        showAlert("Veuillez entrer des valeurs numériques valides");
         return;
     }
 
@@ -150,6 +167,9 @@ function conversionTerminale(){
 }
 
 function conversionDeuxAnnées(){
+    // indicateur de validité 
+    let valid = true; 
+
     // notes de première
     let angPrem = parseFloat(document.getElementById("angPrem").value);
     let espPrem = parseFloat(document.getElementById("espPrem").value);
@@ -175,12 +195,18 @@ function conversionDeuxAnnées(){
     let notes = [moyenneAng, moyenneEsp, moyenneEs, moyenneHist, moyenneEmc];
 
     // Vérifier si les notes sont valides
+    // Vérifier si les notes sont valides
     notes.forEach(note => {
-        if(isNaN(note) || note < 0 || note > 20){
-            alert("Veuillez entrer des valeurs numériques valides");
-            return;
+        if(isNaN(note) || (!(note >= 0 && note <= 20))){
+            valid = false;
         }
     });
+
+    // Vérifier si la situation est valide
+    if(!valid && !messageShown){
+        showAlert("Veuillez entrer des valeurs numériques valides");
+        return;
+    }
 
     // Calculer les points pour le bac
     let pointsBac = moyenneAng * 6 + moyenneEsp * 6 + moyenneEs * 6 + moyenneHist * 6 + moyenneEmc * 2;
@@ -215,3 +241,33 @@ function calculerMention(pointsBac){
     }
     return mention;
 }
+
+
+/* Fonction pour les alertes stylisées */
+function showAlert(message) {
+    // Utilise SweetAlert pour styliser les alertes
+    swal({
+        title: "Erreur",
+        text: message,
+        icon: "error",
+        button: "OK",
+    });
+}
+
+function showConfirmation(message, callback) {
+    // Utilise SweetAlert pour styliser les confirmations avec retour utilisateur
+    swal({
+        title: "Confirmation",
+        text: message,
+        icon: "info",
+        buttons: {
+            cancel: "Annuler",
+            confirm: "OK"
+        }
+    }).then((value) => {
+        if (value) {
+            resetInputs(); // Exécute la fonction callback si l'utilisateur clique sur "OK"
+        }
+    });
+}
+

@@ -42,7 +42,7 @@ body {
     justify-content: center;
     text-align: center;
     padding-top: 20px;
-    font-size: 2em;
+    font-size: 1.75em;
     font-weight: bold;
 }
 
@@ -53,12 +53,21 @@ body {
     border-radius: 45px;
     display: flex;
     width: 80% ;
+    flex-direction: column;
+}
+
+.main-container .notes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
 }
 
 .main-container .premiere,
 .main-container .terminale {
     width: 50%;
-    padding: 50px;
+    flex: 0.5;
+    padding-bottom: 30px;
 }
 
 .main-container .premiere
@@ -68,7 +77,7 @@ body {
 
 .main-container h1 {
     text-align: center;
-    padding: 20px;
+    padding-bottom: 20px;
 }
 
 .main-container .item {
@@ -120,7 +129,7 @@ body {
 .button-box {
     margin-top: 50px;   
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     margin-top: 20px;
     align-items: center;
@@ -129,8 +138,10 @@ body {
 }
 
 button {
-    background-color: #333;
+    background-color: #0B45E0;
     color: #fff;
+    font-weight: 500;
+    font-size: 16px;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -138,11 +149,13 @@ button {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     margin: 10px; /* Espace entre les boutons */
-    width: 100px;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
 }
 
 .button:hover {
-    background-color: #575757;
+    background-color: #0B88E0;
     transform: scale(1.05);
 }
 
