@@ -7,38 +7,99 @@ body {
     color: #333;
 }
 
-/* Styles du menu principal de navigation */
-#headnav {
-    background-color: #333;
-    color: #fff;
+html{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-#headnav ul {
-    list-style-type: none;
+
+/* En-tête */
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px;
+    text-align: center;
+
+    h1 {
+        font-size: 3.25em;
+    }
+
+    p{
+        font-size: 1.5em;
+    }
+}
+
+
+/* Page d'accueil */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: #f4f4f4;
+    padding: 10px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+
+    ul li {
+        margin: 0 15px;
+        display: inline;
+    }
+
+    ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    ul li a:hover {
+        color: #007BFF;
+        transition: 0.3s ease;
+    }
 }
 
-#headnav ul li {
-    margin: 0 15px;
+
+
+/* Style A propos */
+#about {
+    margin: 50px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 45px;
+    display: flex;
+    width: 80% ;
+    flex-direction: column;
+    padding: 20px;
+
+    h2{
+        text-align: center;
+        padding-bottom: 10px;
+        font-size: 2.5em;
+    }
+
+    p{
+        padding: 10px;
+        font-size: 1.5em;
+        margin-left: 20px;
+        margin-right: 20px;
+        line-height: 1.75em;
+    }
 }
 
-#headnav ul li a {
-    text-decoration: none;
-    color: #fff;
-    padding: 14px 20px;
-    display: block;
-    transition: background-color 0.3s;
-}
-
-#headnav ul li a:hover {
-    background-color: #575757;
-}
 
 /* Styles du corps de la page */
-#title{
+.title{
     justify-content: center;
     text-align: center;
     padding-top: 20px;
@@ -165,6 +226,69 @@ button {
 }
 
 
+/* Style du calculateur de moyennes pondérées */
+#moyennePond {
+
+    margin: 50px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 45px;
+    display: flex;
+    width: 80% ;
+    flex-direction: column;
+
+    .moyenne-box {
+        display: flex;
+        flex-direction: row ;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .item {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+
+        h3{
+            padding: 15px;
+        }
+
+        input{
+            width: 40%;
+            padding: 10px 0px 10px 0px ;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+            line-height: 1.5; /* Ajuste la hauteur de ligne pour aligner le texte saisi avec le placeholder */
+        }
+    }
+
+    p{
+        text-align: center;
+        font-size: 1.5em;
+    
+    }
+}
+
+
+
+/* Style du footer */
+footer {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+
+
 /* Style pour le pop-up de résultats */
 .result {
     display: none; /* Le pop-up est initialement caché */
@@ -211,3 +335,37 @@ button {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* Style pour le pop -up de moyenne */
+.moyPond {
+    display: none; /* Le pop-up est initialement caché */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.moyPond-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    text-align: center;
+    border-radius: 20px;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre les éléments verticalement */
+
+    button{
+        margin-top: 20px;
+        padding : 10px 20px;
+        margin: auto;
+    }
+}
+

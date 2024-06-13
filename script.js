@@ -2,6 +2,11 @@
 let valid = true;
 let messageShown = false;
 
+// Pour les moyennes pondérées
+let notes = [];
+let coefs = [];
+
+
 function convert(){
     // Récupérer les points pour le bac
     let pointsBac = conversionPremiere() + conversionTerminale() + conversionDeuxAnnées();
@@ -32,6 +37,52 @@ function reset(){
     let confirmation = showConfirmation("Voulez-vous vraiment tout effacer ?");
 }
 
+function erase(){
+    document.getElementById("noteInput").value = "";
+    document.getElementById("coefUnput").value = "";
+
+    // Vider les tableaux
+    notes = [];
+    coefs = [];
+}
+
+function addNote(){
+    // Récupérer les notes
+    let note = parseFloat(document.getElementById("noteInput").value);
+    let coef = parseFloat(document.getElementById("coefInput").value);
+
+    console.log(note, coef);
+
+    // Vérifier si la note et le coef sont valides
+    if((isNaN(note) || note < 0 || note > 20) && (isNaN(coef) || coef < 0)){
+        showAlert("Veuillez entrer une note valide !");
+        return;
+    }
+
+    // Ajouter la note et le coef aux tableaux
+    notes.push(note);
+    coefs.push(coef);
+}
+
+function calculate(){
+    // Initialisations
+    let sommeNotes = 0;
+    let sommeCoefs = 0;
+
+    console.log(notes, coefs);
+
+    // Parcourir le tableau
+    for(let i = 0; i < notes.length; i++){
+        sommeNotes += notes[i] * coefs[i];
+        sommeCoefs += coefs[i];
+    }
+
+    // Calculer la moyenne pondérée
+    let moyennePonderee = sommeNotes / sommeCoefs;
+
+    // Afficher la moyenne pondérée
+    afficherPopUpMoyenne(moyennePonderee);
+}
 
 /****************************************************
 Fonction pour afficher le popup de la note de passage
@@ -56,8 +107,22 @@ function masquerPopupResultats() {
     resetInputs();
 }
 
-// Événement pour fermer le pop-up lorsque l'utilisateur clique sur le bouton de fermeture
-document.querySelector('.close').addEventListener('click', masquerPopupResultats());
+function afficherPopUpMoyenne(moyennePonderee = 0){
+    document.querySelector('.moyPond').style.display = 'block';
+
+    // Afficher la moyenne pondérée
+    document.querySelector('#moyennePond').textContent = moyennePonderee;
+}
+
+function masquerPopupMoyPond() {
+    document.getElementById('moyPond').style.display = 'none';
+    document.getElementById('moyennePond').textContent = "";
+
+    // Remettre les valeurs par défaut
+    erase();
+}
+
+
 
 /******************************************************
  * Fonction pour réinitialiser les valeurs des inputs
