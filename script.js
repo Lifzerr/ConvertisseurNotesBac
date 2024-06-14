@@ -77,8 +77,14 @@ function calculate(){
         sommeCoefs += coefs[i];
     }
 
+    // Afichiezr les résultats
+    console.log(sommeNotes, sommeCoefs);
+
     // Calculer la moyenne pondérée
-    let moyennePonderee = sommeNotes / sommeCoefs;
+    let moyennePonderee = parseFloat(sommeNotes / sommeCoefs);
+
+    // Afiicher la moyenne pondérée
+    afficherPopUpMoyenne(moyennePonderee);
 
     // Afficher la moyenne pondérée
     afficherPopUpMoyenne(moyennePonderee);
@@ -108,10 +114,10 @@ function masquerPopupResultats() {
 }
 
 function afficherPopUpMoyenne(moyennePonderee = 0){
-    document.querySelector('.moyPond').style.display = 'block';
+    document.querySelector('#moyPond').style.display = 'block';
 
     // Afficher la moyenne pondérée
-    document.querySelector('#moyennePond').textContent = moyennePonderee;
+    document.querySelector('#moyPonderee').textContent = moyennePonderee;
 }
 
 function masquerPopupMoyPond() {
