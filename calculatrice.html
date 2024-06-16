@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Calculatrice</title>
+</head>
+<body>
+        <!-- Menu principal de navigation -- A compléter dans le futur -->
+        <header>
+            <h1>CalcuNote</h1>
+            <p>Votre outil de calcul de moyennes pondérées pour le Bac</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="index.html#calculator">Simulateur</a></li>
+                <li><a href="#">Calculatrice</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+
+    <div class="container">
+        <div class="screen">
+            <p id="written"></p>
+            <p id="result"></p>
+        </div>
+        <div class="buttonBox">
+            <div class="lines">
+                <div class="line">
+                    <button class="button" onclick="clearScreen()">C</button>
+                    <button class="button" onclick="insertOperator('%')">%</button>
+                    <button class="button" onclick="deleteChar()">
+                        <span class="material-symbols-outlined">
+                        backspace
+                        </span>
+                    </button>
+                </div>
+                <div class="line">
+                    <button class="button" onclick="insertNumber(7)">7</button>
+                    <button class="button" onclick="insertNumber(8)">8</button>
+                    <button class="button" onclick="insertNumber(9)">9</button>
+                </div>
+                <div class="line">
+                    <button class="button" onclick="insertNumber(4)">4</button>
+                    <button class="button" onclick="insertNumber(5)">5</button>
+                    <button class="button" onclick="insertNumber(6)">6</button>
+                </div>
+                <div class="line">
+                    <button class="button" onclick="insertNumber(1)">1</button>
+                    <button class="button" onclick="insertNumber(2)">2</button>
+                    <button class="button" onclick="insertNumber(3)">3</button>
+                </div>
+                <div class="line">
+                    <button class="button" onclick="insertNumber(0)">0</button>
+                    <button class="button" onclick="insertOperator('.')">.</button>
+                    <button class="button" onclick="calculate()">=</button>
+                </div>
+            </div>
+            <div class="operators">
+                <button class="button" onclick="insertOperator('²')">²</button>
+                <button class="button" onclick="insertOperator('+')">+</button>
+                <button class="button" onclick="insertOperator('/')">/</button>
+                <button class="button" onclick="insertOperator('*')">*</button>      
+                <button class="button" onclick="insertOperator('-')">-</button>
+            </div>
+            
+        </div>
+    </div>
+
+
+
+    <script src="calculatrice.js"></script>
+</body>
+</html>

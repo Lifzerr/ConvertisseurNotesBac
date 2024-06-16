@@ -219,6 +219,12 @@ button {
     border-radius: 15px;
 }
 
+button:hover {
+    background-color: #0B88E0;
+    transform: scale(1.05);
+    box-shadow: #0ff 0px 0px 10px;
+}
+
 .button:hover {
     background-color: #0B88E0;
     transform: scale(1.05);
@@ -277,6 +283,89 @@ button {
     }
 }
 
+
+/* Formulaire de contact */
+#contact{
+    margin: 50px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 45px;
+    display: flex;
+    width: 80% ;
+    flex-direction: column;
+    padding: 20px;
+
+    h2{
+        text-align: center;
+        padding-bottom: 10px;
+        font-size: 2.5em;
+    }
+
+    .container{
+        margin-top: -50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 85%;
+    }
+
+    .contactLine{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    input[type="text"]{
+        width: 100%;
+        margin: 0px 15px 0px;
+        padding: 10px 0px 10px 0px ;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+        line-height: 1.5; /* Ajuste la hauteur de ligne pour aligner le texte saisi avec le placeholder */
+    }
+
+    textarea{
+        width: 80%;
+        padding: 10px 0px 10px 0px ;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: -15px;
+        transition: border-color 0.3s;
+        line-height: 1.5; /* Ajuste la hauteur de ligne pour aligner le texte saisi avec le placeholder */
+    }
+
+    button{
+        background-color: #0B45E0;
+        color: #fff;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+        margin: 10px; /* Espace entre les boutons */
+        width: 150px;
+        height: 50px;
+        border-radius: 15px;
+    }
+
+    button:hover {
+        background-color: #0B88E0;
+        transform: scale(1.05);
+    }
+
+    button:active {
+        background-color: #111;
+    }
+}
 
 
 /* Style du footer */

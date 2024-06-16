@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CalcuNote - Calculateur de Moyennes Pondérées</title>
     <link rel="stylesheet" href="style/style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>CalcuNote</title>
 </head>
 <body>
+    <!-- Menu principal de navigation -- A compléter dans le futur -->
     <header>
         <h1>CalcuNote</h1>
         <p>Votre outil de calcul de moyennes pondérées pour le Bac</p>
@@ -14,126 +16,193 @@
     <nav>
         <ul>
             <li><a href="#about">À propos</a></li>
-            <li><a href="#features">Fonctionnalités</a></li>
-            <li><a href="#calculator">Calculateur</a></li>
+            <li><a href="#calculator">Simulateur</a></li>
+            <li><a href="calculatrice.html">Calculatrice</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
-    <main>
-        <section id="about">
-            <h2>À propos</h2>
-            <p>Bienvenue sur CalcuNote, l'outil en ligne pour calculer facilement vos moyennes pondérées et vos points pour le Bac. Que vous soyez en première ou en terminale, notre calculateur vous aide à obtenir des résultats précis rapidement.</p>
-        </section>
-        <section id="features">
-            <h2>Fonctionnalités</h2>
-            <ul>
-                <li>Calcul des moyennes pondérées</li>
-                <li>Vérification de la validité des notes</li>
-                <li>Affichage des points pour le Bac</li>
-                <li>Interface simple et intuitive</li>
-            </ul>
-        </section>
-        <section id="calculator">
-            <h2>Calculateur</h2>
-            <div class="main-container">
-                <!-- Notes de Première -->
-                <div class="notes">
-                    <div class="premiere">
-                        <h1 class="annee"> Année de première </h1>
-                        <div class="item">
-                            <label for="Français" > Note de l'épreuve écrite de Français</label>
-                            <input type="text" placeholder="Votre note..." id="EcritFr">
-                        </div>
-                        <div class="item">
-                            <label for="Français" > Note de l'épreuve orale de Français</label>
-                            <input type="text" placeholder="Votre note..." id="oralFr">
-                        </div>
-                        <div class="item">
-                            <label for="Anglais"> Moyenne d'anglais </label>
-                            <input type="text" placeholder="Votre note..." id="angPrem">
-                        </div>
-                        <div class="item">
-                            <label for="Espagnol"> Moyenne d'espagnol </label>
-                            <input type="text" placeholder="Votre note..." id="espPrem">
-                        </div>
-                        <div class="item">
-                            <label for="ES">  Moyenne d'enseignement scientifique </label>
-                            <input type="text" placeholder="Votre note..." id="esPrem">
-                        </div>
-                        <div class="item">
-                            <label for="EMC"> Moyenne d'Éducation Morale et Civique </label>
-                            <input type="text" placeholder="Votre note..." id="emcPrem">
-                        </div>
-                        <div class="item">
-                            <label for="Histoire">  Moyenne d'histoire-géographie </label>
-                            <input type="text" placeholder="Votre note..." id="hisPrem">
-                        </div>
-                        <div class="item">
-                            <label for="spécialité">  Moyenne de la spécialité abandonnée </label>
-                            <input type="text" placeholder="Votre note..." id="spePrem">
-                        </div>
-                    </div>
+    <section id="about">
+        <h2>À propos</h2>
+        <p>Bienvenue sur CalcuNote, l'outil en ligne pour calculer facilement vos moyennes pondérées et vos points pour le Bac. Que vous soyez en première ou en terminale, notre calculateur vous aide à obtenir des résultats précis rapidement.
+            Pour le simulateur, si vous êtes en première, reportez vos notes de première dans les cases de terminale. 
+        </p>
+    </section>
+
+    <!-- Corps de la page -- Labels & zones de saisie -->
+
+    <div class="title">
+        <h1> Simulateur de notes du BAC </h1>
+    </div>
+
+    <div class="main-container" id="calculator">
+        <!-- Notes de Première -->
+        <div class="notes">
+            <div class="premiere">
+                <h1 class="annee"> Année de première </h1>
+                <div class="item">
+                    <label for="Français" > Note de l'épreuve écrite de Français</label>
+                    <input type="text" placeholder="Votre note..." id="EcritFr">
                 </div>
-                
-                <!-- Notes de terminale-->
-                <div class="terminale">
-                    <h1 class="annee"> Année de terminale </h1>
-                    <div class="item">
-                        <label for="Spécialité 1" > Note de la spécialité 1 </label>
-                        <input type="text" placeholder="Votre note..." id="spe1">
-                    </div>
-                    <div class="item">
-                        <label for="Spécialité 2" > Note de la spécialité 2 </label>
-                        <input type="text" placeholder="Votre note..." id="spe2">
-                    </div>
-                    <div class="item">
-                        <label for="Anglais" > Moyenne d'anglais </label>
-                        <input type="text" placeholder="Votre note..." id="angTerm">
-                    </div>
-                    <div class="item">
-                        <label for="Espagnol" > Moyenne d'espagnol </label>
-                        <input type="text" placeholder="Votre note..." id="espTerm">
-                    </div>
-                    <div class="item">
-                        <label for="ES">  Moyenne d'enseignement scientifique </label>
-                        <input type="text" placeholder="Votre note..." id="esTerm">
-                    </div>
-                    <div class="item">
-                        <label for="EMC"> Moyenne d'Éducation Morale et Civique </label>
-                        <input type="text" placeholder="Votre note..." id="emcTerm">
-                    </div>
-                    <div class="item">
-                        <label for="Histoire">  Moyenne d'histoire-géographie </label>
-                        <input type="text" placeholder="Votre note..." id="histTerm">
-                    </div>
-                    <div class="item">
-                        <label for="Philosophie"> Note de Philosophie </label>
-                        <input type="text" placeholder="Votre note..." id="philo">
-                    </div>
-                    <div class="item">
-                        <label for="Philosophie"> Moyenne d'EPS </label>
-                        <input type="text" placeholder="Votre note..." id="sportTerm">
-                    </div>
-                    <div class="item">
-                        <label for="Philosophie"> Note du grand oral </label>
-                        <input type="text" placeholder="Votre note..." id="gdOral">
-                    </div>
+                <div class="item">
+                    <label for="Français" > Note de l'épreuve orale de Français</label>
+                    <input type="text" placeholder="Votre note..." id="oralFr">
                 </div>
-            
-    
-                <div class="button-box">
-                    <button onclick="reset()" class="button">Réinitialiser</button>
-                    <button onclick="convert()" class="button" > Convertir</button>
+                <div class="item">
+                    <label for="Anglais"> Moyenne d'anglais </label>
+                    <input type="text" placeholder="Votre note..." id="angPrem">
+                </div>
+                <div class="item">
+                    <label for="Espagnol"> Moyenne d'espagnol </label>
+                    <input type="text" placeholder="Votre note..." id="espPrem">
+                </div>
+                <div class="item">
+                    <label for="ES">  Moyenne d'enseignement scientifique </label>
+                    <input type="text" placeholder="Votre note..." id="esPrem">
+                </div>
+                <div class="item">
+                    <label for="EMC"> Moyenne d'Éducation Morale et Civique </label>
+                    <input type="text" placeholder="Votre note..." id="emcPrem">
+                </div>
+                <div class="item">
+                    <label for="Histoire">  Moyenne d'histoire-géographie </label>
+                    <input type="text" placeholder="Votre note..." id="hisPrem">
+                </div>
+                <div class="item">
+                    <label for="spécialité">  Moyenne de la spécialité abandonnée </label>
+                    <input type="text" placeholder="Votre note..." id="spePrem">
                 </div>
             </div>
-            </section>
-            <section id="contact">
-                <h2>Contact</h2>
-                <p>Pour toute question ou suggestion, veuillez nous contacter à <a href="mailto:contact@calcunote.com">contact@calcunote.com</a>.</p>
-            </section>
-    </main>
+            
+            <!-- Notes de terminale-->
+            <div class="terminale">
+                <h1 class="annee"> Année de terminale </h1>
+                <div class="item">
+                    <label for="Spécialité 1" > Note de la spécialité 1 </label>
+                    <input type="text" placeholder="Votre note..." id="spe1">
+                </div>
+                <div class="item">
+                    <label for="Spécialité 2" > Note de la spécialité 2 </label>
+                    <input type="text" placeholder="Votre note..." id="spe2">
+                </div>
+                <div class="item">
+                    <label for="Anglais" > Moyenne d'anglais </label>
+                    <input type="text" placeholder="Votre note..." id="angTerm">
+                </div>
+                <div class="item">
+                    <label for="Espagnol" > Moyenne d'espagnol </label>
+                    <input type="text" placeholder="Votre note..." id="espTerm">
+                </div>
+                <div class="item">
+                    <label for="ES">  Moyenne d'enseignement scientifique </label>
+                    <input type="text" placeholder="Votre note..." id="esTerm">
+                </div>
+                <div class="item">
+                    <label for="EMC"> Moyenne d'Éducation Morale et Civique </label>
+                    <input type="text" placeholder="Votre note..." id="emcTerm">
+                </div>
+                <div class="item">
+                    <label for="Histoire">  Moyenne d'histoire-géographie </label>
+                    <input type="text" placeholder="Votre note..." id="histTerm">
+                </div>
+                <div class="item">
+                    <label for="Philosophie"> Note de Philosophie </label>
+                    <input type="text" placeholder="Votre note..." id="philo">
+                </div>
+                <div class="item">
+                    <label for="Philosophie"> Moyenne d'EPS </label>
+                    <input type="text" placeholder="Votre note..." id="sportTerm">
+                </div>
+                <div class="item">
+                    <label for="Philosophie"> Note du grand oral </label>
+                    <input type="text" placeholder="Votre note..." id="gdOral">
+                </div>
+            </div>
+        </div>
+    
+        <div class="button-box">
+            <button onclick="reset()" class="button">Réinitialiser</button>
+            <button onclick="convert()" class="button" > Convertir</button>
+        </div>
+    </div>
+
+
+    <!-- Moyenne pondérées -->
+    <div class="title">
+        <h1> Calculateur de moyennes pondérées </h1>
+    </div>
+
+    <div  id ="moyennePond">
+        <div class="moyenne-box">
+            <div class="item">
+                <h3> Note : </h3>
+                <input type="text" placeholder="Votre note..." id="noteInput">
+            </div>
+            <div class="item">
+                <h3> Coeficient : </h3>
+            <input type="text" placeholder="Votre coeficient..." id="coefInput">
+            </div>
+        </div>
+
+        <p id="info"> Une fois une note ajoutée, elle est définitive. Aucun retour n'est possible. </p>
+
+        <div class="button-box">
+            <button onclick="addNote()" class="button">Ajouter</button>
+            <button onclick="erase()" class="button">Réinitialiser</button>
+            <button onclick="calculate()" class="button" > Calculer</button>
+        </div>
+    </div>
+
+
+    <div id="contact">
+        <h2> Nous contacter</h2>
+
+        <div class="container">
+            <div class="contactLine">
+                <input type="text" placeholder="Votre nom..." id="nom">
+                <input type="text" placeholder="Votre prénom..." id="prenom">
+            </div>
+            <div class="contactLine">
+                <input type="text" placeholder="Votre adresse mail..." id="mail">
+                <input type="text" placeholder="Votre numéro de téléphone..." id="tel">
+            </div>
+            <div class="contactLine">
+                <textarea placeholder="Votre message..." id="message"></textarea>
+            </div>
+            <button onclick="sendMail()" class="button">Envoyer</button>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2024 CalcuNote. Tous droits réservés.</p>
     </footer>
+
+
+
+
+    <!-- Pop-ups -->
+    <div class="result">
+        <div class="results-content">
+            <h1> Résultats </h1>
+            <div class="results-box">
+                <h2> Moyenne générale : <span id="moyenne"> </span> </h2>
+                <h2> Mention : <span id="mention"> </span> </h2>
+            </div>
+            <button onclick="masquerPopupResultats()" class="button"> Fermer </button>
+        </div>
+    </div>
+
+    <div id="moyPond">
+        <div class="moyPond-content">
+            <h1> Moyenne pondérée </h1>
+            <div class="moyPond-box">
+                <h2> Moyenne pondérée : <span id="moyPonderee"> </span> </h2>
+            </div>
+            <button onclick="masquerPopupMoyPond()" class="button"> Fermer </button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
 </body>
+
 </html>

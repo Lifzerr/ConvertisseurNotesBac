@@ -39,11 +39,7 @@ function reset(){
 
 function erase(){
     document.getElementById("noteInput").value = "";
-    document.getElementById("coefUnput").value = "";
-
-    // Vider les tableaux
-    notes = [];
-    coefs = [];
+    document.getElementById("coefInput").value = "";
 }
 
 function addNote(){
@@ -62,6 +58,8 @@ function addNote(){
     // Ajouter la note et le coef aux tableaux
     notes.push(note);
     coefs.push(coef);
+
+    erase();
 }
 
 function calculate(){
@@ -88,6 +86,7 @@ function calculate(){
 
     // Afficher la moyenne pondérée
     afficherPopUpMoyenne(moyennePonderee);
+
 }
 
 /****************************************************
@@ -126,9 +125,41 @@ function masquerPopupMoyPond() {
 
     // Remettre les valeurs par défaut
     erase();
+
+    // Vider les tableaux
+    notes = [];
+    coefs = [];
 }
 
+// Fonction pour envoyer le contenu du formulaire
+function sendMail() {
+    // Récupérer les valeurs des inputs
+    let nom = document.getElementById('nom').value;
+    let prenom = document.getElementById('prenom').value;
+    let email = document.getElementById('mail').value;
+    let message = document.getElementById('message').value;
 
+    // Vérifier si les champs sont vides
+    if (nom === "" || prenom === "" || email === "" || message === "") {
+        showAlert("Veuillez remplir tous les champs !");
+        return;
+    }
+
+    // Envoyer le mail
+    Email.send({
+        Host: "smtp.gmail.com",
+        Username: "username@gmail.com",  
+        Password: "password",
+        To: "maxime.bourciez@gmail.com",
+        From: email,
+        Subject: `Nouveau message de ${nom} ${prenom}Z`,
+        Body: message,
+    }).then(
+        message => alert("Message envoyé avec succès !")
+    ).catch(
+        error => alert("Erreur lors de l'envoi du message : " + error)
+    );
+}
 
 /******************************************************
  * Fonction pour réinitialiser les valeurs des inputs
